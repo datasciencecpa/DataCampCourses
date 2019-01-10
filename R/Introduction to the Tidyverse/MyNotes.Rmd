@@ -1,0 +1,43 @@
+---
+title: "MyNotes"
+author: "LongNguyen"
+date: "1/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load the Gapminder and dplyr packages.
+Need to load both gapminder and dplyr for this course.
+Using filter with pipe %>%.
+For example, using gapminder %>% filter (year ==2007) will filter dataframe for year =2007
+
+```{r}
+library (gapminder)
+library (dplyr)
+gapminder %>% filter (country == "United States")
+```
+
+## Arranging observations by life expectancy
+```{r}
+gapminder %>% arrange(lifeExp)  #Arrange by life expectancy ascending order
+gapminder %>% arrange(desc(lifeExp))
+```
+
+## Using a combination of filter and arrange
+
+```{r}
+# Filter for the year 1957, then arrange in descending order of population
+gapminder %>% filter(year == 1957) %>% arrange(desc(pop))
+```
+
+## Mutate
+mutate () function can be used to either change the exisiting column value, or adding new column to the dataframe.PLEASE remember that calling pipe on mutate only affect the return dataframe, not the original gapminder dataframe.
+
+
+
+
+
+
