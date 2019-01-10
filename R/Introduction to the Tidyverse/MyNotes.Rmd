@@ -36,8 +36,22 @@ gapminder %>% filter(year == 1957) %>% arrange(desc(pop))
 ## Mutate
 mutate () function can be used to either change the exisiting column value, or adding new column to the dataframe.PLEASE remember that calling pipe on mutate only affect the return dataframe, not the original gapminder dataframe.
 
+## Data visualization with ggplot2
+Example of displaying population and gdpPercap for year 1952
+```{r}
+library(ggplot2)  # Need to load the library first.
+ggplot(gapminder %>%filter(year==1952), aes(x=pop, y= gdpPercap)) + geom_point()
+```
 
+Introducing log_scale by adding: scale_x_log10() or scale_y_log10()
+```{r}
+gapminder_2002 <- gapminder %>% filter(year == 2002)
+ggplot(gapminder_2002, aes (x= pop, y= lifeExp, color = continent, size = gdpPercap)) + geom_point()+ scale_x_log10()
+```
 
+Dividing graph by using faceting
+```{r}
+ggplot(gapminder, aes(x= gdpPercap, y= lifeExp, color = continent, size=pop)) + geom_point() + scale_x_log10() + facet_wrap(~year)
 
-
+```
 
