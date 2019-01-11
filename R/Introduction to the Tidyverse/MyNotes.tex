@@ -1,0 +1,392 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={MyNotes},
+            pdfauthor={LongNguyen},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{MyNotes}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{LongNguyen}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{1/10/2019}
+
+
+\begin{document}
+\maketitle
+
+\subsection{Load the Gapminder and dplyr
+packages.}\label{load-the-gapminder-and-dplyr-packages.}
+
+Need to load both gapminder and dplyr for this course. Using filter with
+pipe \%\textgreater{}\%. For example, using gapminder \%\textgreater{}\%
+filter (year ==2007) will filter dataframe for year =2007
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{ (gapminder)}
+\KeywordTok{library}\NormalTok{ (dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{ (country }\OperatorTok{==}\StringTok{ "United States"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 6
+##    country       continent  year lifeExp       pop gdpPercap
+##    <fct>         <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 United States Americas   1952    68.4 157553000    13990.
+##  2 United States Americas   1957    69.5 171984000    14847.
+##  3 United States Americas   1962    70.2 186538000    16173.
+##  4 United States Americas   1967    70.8 198712000    19530.
+##  5 United States Americas   1972    71.3 209896000    21806.
+##  6 United States Americas   1977    73.4 220239000    24073.
+##  7 United States Americas   1982    74.6 232187835    25010.
+##  8 United States Americas   1987    75.0 242803533    29884.
+##  9 United States Americas   1992    76.1 256894189    32004.
+## 10 United States Americas   1997    76.8 272911760    35767.
+## 11 United States Americas   2002    77.3 287675526    39097.
+## 12 United States Americas   2007    78.2 301139947    42952.
+\end{verbatim}
+
+\subsection{Arranging observations by life
+expectancy}\label{arranging-observations-by-life-expectancy}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(lifeExp)  }\CommentTok{#Arrange by life expectancy ascending order}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1,704 x 6
+##    country      continent  year lifeExp     pop gdpPercap
+##    <fct>        <fct>     <int>   <dbl>   <int>     <dbl>
+##  1 Rwanda       Africa     1992    23.6 7290203      737.
+##  2 Afghanistan  Asia       1952    28.8 8425333      779.
+##  3 Gambia       Africa     1952    30    284320      485.
+##  4 Angola       Africa     1952    30.0 4232095     3521.
+##  5 Sierra Leone Africa     1952    30.3 2143249      880.
+##  6 Afghanistan  Asia       1957    30.3 9240934      821.
+##  7 Cambodia     Asia       1977    31.2 6978607      525.
+##  8 Mozambique   Africa     1952    31.3 6446316      469.
+##  9 Sierra Leone Africa     1957    31.6 2295678     1004.
+## 10 Burkina Faso Africa     1952    32.0 4469979      543.
+## # ... with 1,694 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(lifeExp))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1,704 x 6
+##    country          continent  year lifeExp       pop gdpPercap
+##    <fct>            <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Japan            Asia       2007    82.6 127467972    31656.
+##  2 Hong Kong, China Asia       2007    82.2   6980412    39725.
+##  3 Japan            Asia       2002    82   127065841    28605.
+##  4 Iceland          Europe     2007    81.8    301931    36181.
+##  5 Switzerland      Europe     2007    81.7   7554661    37506.
+##  6 Hong Kong, China Asia       2002    81.5   6762476    30209.
+##  7 Australia        Oceania    2007    81.2  20434176    34435.
+##  8 Spain            Europe     2007    80.9  40448191    28821.
+##  9 Sweden           Europe     2007    80.9   9031088    33860.
+## 10 Israel           Asia       2007    80.7   6426679    25523.
+## # ... with 1,694 more rows
+\end{verbatim}
+
+\subsection{Using a combination of filter and
+arrange}\label{using-a-combination-of-filter-and-arrange}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Filter for the year 1957, then arrange in descending order of population}
+\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(year }\OperatorTok{==}\StringTok{ }\DecValTok{1957}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(pop))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 142 x 6
+##    country        continent  year lifeExp       pop gdpPercap
+##    <fct>          <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 China          Asia       1957    50.5 637408000      576.
+##  2 India          Asia       1957    40.2 409000000      590.
+##  3 United States  Americas   1957    69.5 171984000    14847.
+##  4 Japan          Asia       1957    65.5  91563009     4318.
+##  5 Indonesia      Asia       1957    39.9  90124000      859.
+##  6 Germany        Europe     1957    69.1  71019069    10188.
+##  7 Brazil         Americas   1957    53.3  65551171     2487.
+##  8 United Kingdom Europe     1957    70.4  51430000    11283.
+##  9 Bangladesh     Asia       1957    39.3  51365468      662.
+## 10 Italy          Europe     1957    67.8  49182000     6249.
+## # ... with 132 more rows
+\end{verbatim}
+
+\subsection{Mutate}\label{mutate}
+
+mutate () function can be used to either change the exisiting column
+value, or adding new column to the dataframe.PLEASE remember that
+calling pipe on mutate only affect the return dataframe, not the
+original gapminder dataframe.
+
+\subsection{Data visualization with
+ggplot2}\label{data-visualization-with-ggplot2}
+
+Example of displaying population and gdpPercap for year 1952
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)  }\CommentTok{# Need to load the library first.}
+\KeywordTok{ggplot}\NormalTok{(gapminder }\OperatorTok{%>%}\KeywordTok{filter}\NormalTok{(year}\OperatorTok{==}\DecValTok{1952}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{pop, }\DataTypeTok{y=}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+Introducing log\_scale by adding: scale\_x\_log10() or scale\_y\_log10()
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder_}\DecValTok{2002}\NormalTok{ <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(year }\OperatorTok{==}\StringTok{ }\DecValTok{2002}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(gapminder_}\DecValTok{2002}\NormalTok{, }\KeywordTok{aes}\NormalTok{ (}\DataTypeTok{x=}\NormalTok{ pop, }\DataTypeTok{y=}\NormalTok{ lifeExp, }\DataTypeTok{color =}\NormalTok{ continent, }\DataTypeTok{size =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_log10}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Dividing graph by using faceting
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(gapminder, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ gdpPercap, }\DataTypeTok{y=}\NormalTok{ lifeExp, }\DataTypeTok{color =}\NormalTok{ continent, }\DataTypeTok{size=}\NormalTok{pop)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_log10}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{year)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\subsection{Introduction to summarize,
+group\_by,}\label{introduction-to-summarize-group_by}
+
+summarize function summarizes and return one value for the category
+(year in this course example) group\_by() received a column variable
+that the data will be grouped by.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Example:}
+\CommentTok{# Code below will display summarize of median life expectancy and max gdpPerCapital for each year.}
+\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(year) }\OperatorTok{%>%}\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{medianLifeExp =} \KeywordTok{median}\NormalTok{(lifeExp), }\DataTypeTok{maxGdpPercap =} \KeywordTok{max}\NormalTok{(gdpPercap))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 3
+##     year medianLifeExp maxGdpPercap
+##    <int>         <dbl>        <dbl>
+##  1  1952          45.1      108382.
+##  2  1957          48.4      113523.
+##  3  1962          50.9       95458.
+##  4  1967          53.8       80895.
+##  5  1972          56.5      109348.
+##  6  1977          59.7       59265.
+##  7  1982          62.4       33693.
+##  8  1987          65.8       31541.
+##  9  1992          67.7       34933.
+## 10  1997          69.4       41283.
+## 11  2002          70.8       44684.
+## 12  2007          71.9       49357.
+\end{verbatim}
+
+Another example, median life expectancy, max GDP Percap groupby
+continent for year 1957
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(year}\OperatorTok{==}\DecValTok{1957}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(continent) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{medianLifeExp =} \KeywordTok{median}\NormalTok{(lifeExp), }\DataTypeTok{maxGdpPercap =} \KeywordTok{max}\NormalTok{(gdpPercap))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 3
+##   continent medianLifeExp maxGdpPercap
+##   <fct>             <dbl>        <dbl>
+## 1 Africa             40.6        5487.
+## 2 Americas           56.1       14847.
+## 3 Asia               48.3      113523.
+## 4 Europe             67.6       17909.
+## 5 Oceania            70.3       12247.
+\end{verbatim}
+
+\subsection{Other graphs such as Line graph, Bar
+graph,}\label{other-graphs-such-as-line-graph-bar-graph}
+
+Bar\_Graph: geom\_col() Line\_Graph: geom\_line() Histograms:
+geom\_histogram() -- Show frequency. Historgram does not require y-axis
+as in other graph.Using binwidth to adjust the bin size. box\_plots:
+geom\_boxplot()
+
+\begin{itemize}
+\tightlist
+\item
+  Adding ggtitle() to add \emph{title} to the graph
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Display bar graph of median GDP per cap for year 1952 per continent}
+\NormalTok{by_continent <-}\StringTok{ }\NormalTok{gapminder}\OperatorTok{%>%}\KeywordTok{filter}\NormalTok{(year}\OperatorTok{==}\DecValTok{1952}\NormalTok{) }\OperatorTok{%>%}\KeywordTok{group_by}\NormalTok{(continent) }\OperatorTok{%>%}\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{medianGdpPercap =} \KeywordTok{median}\NormalTok{ (gdpPercap))}
+\KeywordTok{ggplot}\NormalTok{(by_continent, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ continent, }\DataTypeTok{y=}\NormalTok{ medianGdpPercap)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Another example:}
+\NormalTok{oceania_}\DecValTok{1952}\NormalTok{ <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(year }\OperatorTok{==}\StringTok{ }\DecValTok{1952}\NormalTok{, continent }\OperatorTok{==}\StringTok{ "Oceania"}\NormalTok{) }\CommentTok{# filter by year and Oceania}
+\KeywordTok{ggplot}\NormalTok{(oceania_}\DecValTok{1952}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ country, }\DataTypeTok{y=}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+
+\end{document}
