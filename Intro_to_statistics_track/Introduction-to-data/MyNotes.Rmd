@@ -1,0 +1,41 @@
+---
+title: "Introduction To Data"
+author: "LongNguyen"
+date: "1/14/2019"
+output: html_document
+---
+
+## Chapter 1
+This chapter will use the dataset from *openintro* and *dplyr* package.
+some of the new functions that I learned in this chapter are:
+1.  glimpse() which is part of the *dplyr* package. This function is similar to the str() function.
+2.  droplevels () **Use with factor data where some levels are unused**
+3.  mutate(read_cat = ifelse(read < avg_read, "below average", "at or above average"))  Create and assign values to new category of dataframe.$
+4.  case_when()   See help() page of this function. Similar to switch_case in other language.
+
+```{r echo=FALSE}
+library(openintro)
+library(dplyr)
+str(email50)  # Review struction of email50
+
+```
+Example of case_when()
+```{r echo= FALSE}
+# Create number_yn column in email50
+email50_fortified <- email50 %>%
+  mutate(
+    number_yn = case_when(
+      # if number is "none", make number_yn "no"
+      number =="none" ~ "no", 
+      # if number is not "none", make number_yn "yes"
+      number != "none" ~ "yes"  
+    )
+  )
+  
+
+# Visualize the distribution of number_yn
+ggplot(email50_fortified, aes(x = number_yn)) +
+  geom_bar()
+```
+
+## Chapter 2

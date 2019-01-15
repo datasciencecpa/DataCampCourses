@@ -1,0 +1,12 @@
+---
+title: "Select and Mutate"
+author: "Long Nguyen"
+date: "1/14/2019"
+output: html_document
+---
+
+## Select and Mutate
+```{r}
+  library(dplyr), library(hflights) # loading necessary packages
+  
+```
