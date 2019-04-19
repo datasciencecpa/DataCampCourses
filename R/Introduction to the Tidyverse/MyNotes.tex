@@ -106,7 +106,7 @@
 \usepackage{titling}
 
 % Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
+\providecommand{\subtitle}[1]{
   \posttitle{
     \begin{center}\large#1\end{center}
     }
@@ -141,6 +141,10 @@ filter (year ==2007) will filter dataframe for year =2007
 \KeywordTok{library}\NormalTok{ (dplyr)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 3.5.2
+\end{verbatim}
 
 \begin{verbatim}
 ## 
@@ -354,13 +358,22 @@ continent for year 1957
 ## 5 Oceania            70.3       12247.
 \end{verbatim}
 
-\subsection{Other graphs such as Line graph, Bar
-graph,}\label{other-graphs-such-as-line-graph-bar-graph}
+Visualizing median GDP per capita per continent overtime.
 
-Bar\_Graph: geom\_col() Line\_Graph: geom\_line() Histograms:
-geom\_histogram() -- Show frequency. Historgram does not require y-axis
-as in other graph.Using binwidth to adjust the bin size. box\_plots:
-geom\_boxplot()
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by_year_continent <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}\KeywordTok{group_by}\NormalTok{(year, continent) }\OperatorTok{%>%}\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{medianGdpPercap =} \KeywordTok{median}\NormalTok{(gdpPercap))}
+
+\CommentTok{# Plot the change in medianGdpPercap in each continent over time}
+\KeywordTok{ggplot}\NormalTok{ (by_year_continent, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ medianGdpPercap, }\DataTypeTok{color =}\NormalTok{ continent)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{expand_limits}\NormalTok{(}\DataTypeTok{y=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-9-1.pdf} \#\#
+Other graphs such as Line graph, Bar graph, Bar\_Graph: geom\_col()
+Line\_Graph: geom\_line() Histograms: geom\_histogram() -- Show
+frequency. Historgram does not require y-axis as in other graph.Using
+binwidth to adjust the bin size. box\_plots: geom\_boxplot()
 
 \begin{itemize}
 \tightlist
@@ -376,7 +389,7 @@ geom\_boxplot()
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-9-1.pdf}
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -386,7 +399,7 @@ geom\_boxplot()
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-9-2.pdf}
+\includegraphics{MyNotes_files/figure-latex/unnamed-chunk-10-2.pdf}
 
 
 \end{document}

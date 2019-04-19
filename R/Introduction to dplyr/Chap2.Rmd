@@ -7,6 +7,40 @@ output: html_document
 
 ## Select and Mutate
 ```{r}
-  library(dplyr), library(hflights) # loading necessary packages
+  library(dplyr) ; library(hflights) # loading necessary packages
+  # View examples of select() that accompanied the packages
+  example("select")
+  # Convert hflights into a tibble
+  hflights <- as_tibble(hflights)
+```
+
+### Exercise examples:
+```{r}
+  # As usual, hflights is pre-loaded as a tbl, together with the necessary libraries.
   
+  # Print out a tbl containing just ArrDelay and DepDelay
+  select (hflights, "ArrDelay": "DepDelay")
+  
+  # Print out a tbl as described in the second instruction, using both helper functions and variable names
+  select (hflights, "UniqueCarrier": "TailNum", starts_with("Cancell"))
+  
+  # Print out a tbl as described in the third instruction, using only helper functions.
+  select (hflights, ends_with("Time"), contains ("Delay"))
+```
+Another example of using dplyr compared with based R function
+
+```{r}
+# both hflights and dplyr are available
+
+# Finish select call so that ex1d matches ex1r
+ex1r <- hflights[c("TaxiIn", "TaxiOut", "Distance")]
+ex1d <- select(hflights, c("TaxiIn", "TaxiOut", "Distance"))
+
+# Finish select call so that ex2d matches ex2r
+ex2r <- hflights[c("Year", "Month", "DayOfWeek", "DepTime", "ArrTime")]
+ex2d <- select(hflights, "Year": "ArrTime", -"DayofMonth")
+
+# Finish select call so that ex3d matches ex3r
+ex3r <- hflights[c("TailNum", "TaxiIn", "TaxiOut")]
+ex3d <- select(hflights, starts_with("Ta"))
 ```

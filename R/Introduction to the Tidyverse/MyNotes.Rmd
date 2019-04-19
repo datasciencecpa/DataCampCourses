@@ -71,6 +71,14 @@ Another example, median life expectancy, max GDP Percap groupby continent for ye
 gapminder %>% filter(year==1957) %>% group_by(continent) %>% summarize(medianLifeExp = median(lifeExp), maxGdpPercap = max(gdpPercap))
 ```
 
+Visualizing median GDP per capita per continent overtime.
+
+```{r}
+by_year_continent <- gapminder %>%group_by(year, continent) %>%summarize(medianGdpPercap = median(gdpPercap))
+
+# Plot the change in medianGdpPercap in each continent over time
+ggplot (by_year_continent, aes(x= year, y = medianGdpPercap, color = continent)) + geom_point() + expand_limits(y=0)
+```
 ## Other graphs such as Line graph, Bar graph, 
 Bar_Graph: geom_col()
 Line_Graph: geom_line()

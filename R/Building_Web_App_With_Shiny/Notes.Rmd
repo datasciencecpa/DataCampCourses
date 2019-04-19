@@ -1,0 +1,18 @@
+---
+title: "Notes"
+author: "Long Nguyen"
+date: "1/18/2019"
+output: html_document
+---
+
+### Sources while I learned Shiny and practice codes from Datacamp
+**DT package** -- Reading more about this package [https://blog.rstudio.com/2015/06/24/dt-an-r-interface-to-the-datatables-library/] (here!)
+
+
+
+
+
+
+
+### Notes:
+* Adding *req()* could prevent error when input is missing.
